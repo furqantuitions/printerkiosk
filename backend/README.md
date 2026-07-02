@@ -1,3 +1,4 @@
+https://printerkiosk-production.up.railway.app/
 # Cloud PDF Service
 
 Upload any document → convert to PDF → auto-compress if >30MB → reject if
