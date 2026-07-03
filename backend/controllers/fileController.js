@@ -6,7 +6,7 @@ const {
   getPageCount,
   compressPdfBuffer,
 } = require('../services/pdfService');
-const { uploadBufferToCloudinary } = require('../services/cloudinaryService');
+const { uploadBufferToSupabase } = require('../services/supabaseService');
 const { saveFileRecord, getFileRecordByNumber } = require('../services/firebaseService');
 const logger = require('../utils/logger');
 
@@ -67,13 +67,14 @@ async function uploadFile(req, res, next) {
     // 5. Unique random 6-digit identifier
     const number = await getUniqueNumber();
 
-    // 6. Upload to Cloudinary (filename sanitized to keep public_id safe)
+    // 6. Upload to Supabase Storage (filename sanitized to keep the object key safe)
     const safeName = sanitizeFilename(originalName);
-    const cloudinaryResult = await uploadBufferToCloudinary(buffer, `${number}-${safeName}`);
+    const objectKey = `pdf_uploads/${number}-${safeName}.pdf`;
+    const supabaseResult = await uploadBufferToSupabase(buffer, objectKey);
 
     // 7. Persist to Firebase Realtime DB
     const timestamp = Date.now();
-    const record = await saveFileRecord({ number, url: cloudinaryResult.secure_url, pages, timestamp });
+    const record = await saveFileRecord({ number, url: supabaseResult.url, pages, timestamp });
 
     log.info({ number, pages }, 'Upload processed successfully');
 

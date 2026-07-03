@@ -10,11 +10,10 @@
   "dependencies": {
     "express": "^4.19.2",
     "multer": "^1.4.5-lts.1",
-    "cloudinary": "^2.4.0",
+    "@supabase/supabase-js": "^2.45.4",
     "firebase-admin": "^12.3.1",
     "pdf-lib": "^1.17.1",
     "libreoffice-convert": "^1.6.0",
-    "streamifier": "^0.1.1",
     "axios": "^1.7.4",
     "dotenv": "^16.4.5",
     "helmet": "^7.1.0",
