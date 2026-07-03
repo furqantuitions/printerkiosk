@@ -1,0 +1,35 @@
+.site-header {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 24px 20px 8px;
+}
+
+.site-header__brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.site-header__mark {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 3px 7px;
+  border-radius: 4px;
+}
+
+.site-header__mark-accent {
+  color: #ff8a70;
+}
+
+.site-header__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+}

@@ -1,0 +1,36 @@
+.lookup {
+  padding-top: 12px;
+}
+
+.lookup__intro h1 {
+  font-size: clamp(1.7rem, 5vw, 2.2rem);
+  margin: 8px 0 10px;
+  line-height: 1.1;
+}
+
+.lookup__sub {
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+
+.lookup__form {
+  display: flex;
+  gap: 10px;
+}
+
+.lookup__form input {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--rule);
+  background: var(--white);
+  color: var(--ink);
+}
+
+.lookup__form input:focus {
+  outline: none;
+  border-color: var(--stamp-red);
+}

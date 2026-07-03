@@ -1,0 +1,224 @@
+/* =========================================================
+   Cloud Print Kiosk — design tokens
+   Concept: a document is a "ticket" — you drop it off, get a
+   claim number printed on a perforated stub, and collect it
+   at a physical kiosk. Typography and texture borrow from
+   thermal receipts and claim tickets, not generic SaaS.
+   ========================================================= */
+
+:root {
+  /* -- palette -- */
+  --paper: #ededE4;
+  --paper-recessed: #e2e1d4;
+  --page-bg: #ededE4; /* overridden locally so ticket notches "cut into" whatever sits behind them */
+  --ink: #1d2233;
+  --ink-soft: #565b6b;
+  --ink-faint: #8c8f9c;
+  --rule: #cac7b6;
+  --stamp-red: #c8102e;
+  --stamp-red-dark: #9c0c23;
+  --stamp-green: #2e6b4e;
+  --stamp-green-bg: #e4efe8;
+  --stamp-amber: #9c6b0b;
+  --stamp-amber-bg: #f5ecd8;
+  --white: #fff;
+
+  /* -- type -- */
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+
+  /* -- layout -- */
+  --max-width: 720px;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow-card: 0 1px 0 rgba(29, 34, 51, 0.04), 0 12px 28px -16px rgba(29, 34, 51, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--ink);
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+.app-shell {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px 64px;
+}
+
+/* -- reduced motion -- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* -- focus visibility -- */
+:focus-visible {
+  outline: 2px solid var(--stamp-red);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* -- shared utility classes -- */
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 14px 22px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-primary {
+  background: var(--stamp-red);
+  color: var(--white);
+  box-shadow: 0 8px 18px -8px rgba(200, 16, 46, 0.55);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--stamp-red-dark);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--rule);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  border-color: var(--ink);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hairline {
+  border: none;
+  border-top: 1px dashed var(--rule);
+  margin: 0;
+}
+
+.error-banner {
+  background: var(--stamp-amber-bg);
+  color: var(--stamp-amber);
+  border: 1px solid rgba(156, 107, 11, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.error-banner.critical {
+  background: #fbe7e7;
+  color: var(--stamp-red-dark);
+  border-color: rgba(200, 16, 46, 0.25);
+}
+
+/* -- perforated ticket edge, used by <Ticket /> -- */
+.ticket-edge {
+  position: relative;
+}
+
+.ticket-edge::before,
+.ticket-edge::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background-image: radial-gradient(circle at 10px 6px, var(--page-bg) 6px, transparent 6.5px);
+  background-size: 20px 12px;
+  background-repeat: repeat-x;
+  pointer-events: none;
+}
+
+.ticket-edge::before {
+  top: -1px;
+}
+
+.ticket-edge::after {
+  bottom: -1px;
+  transform: scaleY(-1);
+}

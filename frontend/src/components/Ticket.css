@@ -1,0 +1,199 @@
+.ticket {
+  --page-bg: var(--paper);
+  display: flex;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  padding: 4px 0;
+}
+
+.ticket__stub {
+  flex: 0 0 128px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+  padding: 18px 16px;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.ticket__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(237, 237, 228, 0.6);
+}
+
+.ticket__number {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.03em;
+}
+
+.ticket__status {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(237, 237, 228, 0.14);
+}
+
+.ticket__status--paid,
+.ticket__status--already_paid {
+  background: var(--stamp-green);
+  color: var(--white);
+}
+
+.ticket__status--error {
+  background: var(--stamp-red);
+  color: var(--white);
+}
+
+.ticket__tear {
+  flex: 0 0 0;
+  border-left: 1.5px dashed rgba(29, 34, 51, 0.25);
+  position: relative;
+}
+
+.ticket__tear::before,
+.ticket__tear::after {
+  content: "";
+  position: absolute;
+  left: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--page-bg);
+}
+
+.ticket__tear::before {
+  top: -5px;
+}
+
+.ticket__tear::after {
+  bottom: -5px;
+}
+
+.ticket__body {
+  flex: 1;
+  min-width: 0;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+}
+
+.ticket__filename {
+  font-weight: 600;
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ticket__meta {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.ticket__dot {
+  margin: 0 6px;
+  color: var(--rule);
+}
+
+.ticket__error {
+  font-size: 13px;
+  color: var(--stamp-red-dark);
+}
+
+.ticket__progress-track {
+  height: 5px;
+  background: var(--paper-recessed);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.ticket__progress-fill {
+  height: 100%;
+  background: var(--stamp-red);
+  transition: width 0.2s ease;
+}
+
+.ticket__remove {
+  align-self: flex-start;
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-faint);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.ticket__remove:hover {
+  color: var(--stamp-red);
+}
+
+/* -- large variant, used on the thank-you page -- */
+.ticket--large {
+  border-radius: 18px;
+}
+
+.ticket--large .ticket__stub {
+  flex-basis: 168px;
+  padding: 26px 18px;
+}
+
+.ticket--large .ticket__number {
+  font-size: 34px;
+}
+
+.ticket--large .ticket__body {
+  padding: 22px 24px;
+}
+
+.ticket--large .ticket__filename {
+  font-size: 16px;
+}
+
+/* -- mobile: stack stub above body -- */
+@media (max-width: 480px) {
+  .ticket {
+    flex-direction: column;
+  }
+
+  .ticket__stub {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: auto;
+  }
+
+  .ticket__tear {
+    border-left: none;
+    border-top: 1.5px dashed rgba(29, 34, 51, 0.25);
+  }
+
+  .ticket__tear::before,
+  .ticket__tear::after {
+    left: 50%;
+    top: -5px;
+    transform: translateX(-50%);
+  }
+
+  .ticket__tear::after {
+    left: auto;
+    right: -5px;
+    top: -5px;
+    transform: none;
+  }
+}

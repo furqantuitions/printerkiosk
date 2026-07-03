@@ -1,0 +1,20 @@
+.site-footer {
+  max-width: var(--max-width);
+  margin: 40px auto 0;
+  padding: 20px 20px 32px;
+  border-top: 1px dashed var(--rule);
+  text-align: center;
+}
+
+.site-footer__line {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+}
+
+.site-footer__fine {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-top: 4px;
+}

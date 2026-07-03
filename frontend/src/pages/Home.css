@@ -1,0 +1,107 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding-top: 12px;
+}
+
+.home__hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.home__headline {
+  font-size: clamp(2.1rem, 6vw, 3rem);
+  line-height: 1.05;
+}
+
+.home__sub {
+  font-size: 16px;
+  color: var(--ink-soft);
+  max-width: 46ch;
+}
+
+.home__cta {
+  margin-top: 6px;
+}
+
+.home__sample-ticket {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.home__steps-eyebrow {
+  margin-bottom: 12px;
+}
+
+.receipt {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.receipt__line {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+}
+
+.receipt__line + .receipt__line {
+  border-top: 1px dashed var(--rule);
+}
+
+.receipt__index {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--stamp-red);
+  min-width: 1.4em;
+}
+
+.receipt__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.receipt__label {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.receipt__detail {
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+
+.home__pricing {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 18px 20px;
+}
+
+.home__pricing-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--font-mono);
+}
+
+.home__pricing-amount {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--stamp-red);
+}
+
+.home__pricing-note {
+  font-size: 13px;
+  color: var(--ink-faint);
+  margin-top: 12px;
+}
