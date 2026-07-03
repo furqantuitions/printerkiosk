@@ -39,7 +39,7 @@ export default function Upload() {
             number: data.number,
             filename: data.filename ?? file.name,
             pages: data.pages,
-            amount: data.amount,
+            amount: data.amountDuePkr,
           };
           updateItem(id, { status: "ready", ...entry });
           addCartItem(entry);
